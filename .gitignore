@@ -1,0 +1,17 @@
+*~
+.#*
+\#*\#
+*.tex
+*.pdf
+*.ics
+*.odt
+*.out
+*.aux
+*.log
+*.html
+.directory
+*.sync-conflict*
+cache
+.doit.db
+__pycache__
+output
