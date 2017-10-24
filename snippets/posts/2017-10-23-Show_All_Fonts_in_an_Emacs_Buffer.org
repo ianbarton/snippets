@@ -1,0 +1,24 @@
+#+BEGIN_COMMENT
+.. title: 2017 01 21 Show All Fonts in an Emacs Buffer
+.. slug: 2017-01-21-show-all-fonts-in-an-emacs-buffer
+.. date: 2017-10-23 14:11:22 UTC
+.. tags: emacs
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+* Show All Fonts in an Emacs Buffer.
+#+begin_src emacs-lisp
+;; https://www.emacswiki.org/emacs/GoodFonts
+(let ((str "The quick brown fox jumps over the lazy dog ´`''\"\"1lI|¦!Ø0Oo{[()]}.,:; ")
+      (font-families (cl-remove-duplicates
+		      (sort (font-family-list)
+			    (lambda(x y) (string< (upcase x) (upcase y))))
+		      :test 'string=)))
+  (dolist (ff font-families)
+    (insert
+     (propertize str 'font-lock-face `(:family ,ff))               ff "\n"
+     (propertize str 'font-lock-face `(:family ,ff :slant italic)) ff "\n")))
+#+end_src

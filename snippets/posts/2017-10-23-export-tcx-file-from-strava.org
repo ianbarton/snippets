@@ -1,0 +1,18 @@
+#+BEGIN_COMMENT
+.. title: 2017 10 23 Export Tcx File From Strava
+.. slug: 2017-10-23-export-tcx-file-from-strava
+.. date: 2017-10-23 14:03:23 UTC
+.. tags: strava, gps, tcx
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+* Export Tcx File From Strava
+#+begin_src shell
+http://activity/export_tcx
+#+end_src
+
+Simply add "/export_tcx" - without quotes - to the end of your
+activity page URL.

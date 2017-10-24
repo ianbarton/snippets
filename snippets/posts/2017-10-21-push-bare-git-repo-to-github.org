@@ -1,0 +1,15 @@
+#+BEGIN_COMMENT
+.. title: 2017 10 21 Push Bare Git Repo To Github
+.. slug: 2017-10-21-push-bare-git-repo-to-github
+.. date: 2017-10-21 13:55:27 UTC
+.. tags: git, github
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+* Push Bare repo to Github.
+#+begin_src sh
+git push --mirror github.com-ianbarton:ianbarton/cycling.git
+#+end_src

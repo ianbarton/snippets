@@ -1,0 +1,19 @@
+#+BEGIN_COMMENT
+.. title: 2017 10 21 Xorg Xbacklight
+.. slug: 2017-10-21-xorg-xbacklight
+.. date: 2017-10-21 13:51:44 UTC
+.. tags: i3, xorg
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+* xorg-xbacklight
+  :PROPERTIES:
+  :ID:       b672c830-b1d2-4d2f-bade-d0d1d27dce37
+  :END:
+#+begin_src sh
+# reduce backlight to 50%
+xbacklight 50
+#+end_src

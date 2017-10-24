@@ -1,0 +1,21 @@
+#+BEGIN_COMMENT
+.. title: 2017 10 21 Move Git Repo To A New Server
+.. slug: 2017-10-21-move-git-repo-to-a-new-server
+.. date: 2017-10-21 13:54:12 UTC
+.. tags: git
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+#+tags: nil
+* Move Git Repo to a New Server.
+  :PROPERTIES:
+  :ID:       e57a6912-bd49-4727-986c-0cfc622e3ed0
+  :END:
+#+begin_src sh
+git clone –bare git@github.com:old/repo.git
+cd repo
+git remote add origin git@github.com:mygithubname/myrepo.git
+git push –mirror
+#+end_src

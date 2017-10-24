@@ -1,0 +1,20 @@
+#+BEGIN_COMMENT
+.. title: 2017 10 21 Emacs Count Days Between Two Dates
+.. slug: 2017-10-21-emacs-count-days-between-two-dates
+.. date: 2017-10-21 14:02:36 UTC
+.. tags: emacs, lisp
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+* Count Days Between Two Dates.
+
+http://xenodium.com/#emacs-find-number-of-days-between-dates
+
+#+begin_src lisp
+M-x calendar
+<mark the region between the two dates (inclusive)>
+M-= (or M-x calendar-count-days-region)
+#+end_src
