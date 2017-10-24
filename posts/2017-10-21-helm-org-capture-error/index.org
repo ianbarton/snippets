@@ -1,0 +1,16 @@
+#+BEGIN_COMMENT
+.. title: 2017 10 21 Helm Org Capture Error
+.. slug: 2017-10-21-helm-org-capture-error
+.. date: 2017-10-21 14:04:44 UTC
+.. tags: emacs, helm, org-mode
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+*** [2016-05-13 Fri 10:34] helm org-capture error.
+See: https://github.com/emacs-helm/helm/issues/1494
+#+begin_src emacs-lisp
+(setcdr (assoc 'org-capture helm-completing-read-handlers-alist) nil)
+#+end_src

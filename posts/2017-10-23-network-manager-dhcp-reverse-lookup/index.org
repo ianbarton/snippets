@@ -1,0 +1,24 @@
+#+BEGIN_COMMENT
+.. title: 2017 10 23 Network Manager Dhcp Reverse Lookup
+.. slug: 2017-10-23-network-manager-dhcp-reverse-lookup
+.. date: 2017-10-23 14:08:55 UTC
+.. tags:
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+* Network Manager Dhcp Reverse Lookup
+See: https://wiki.archlinux.org/index.php/NetworkManager#DHCP_problems_with_dhclient
+
+It depends on the NetworkManager plugins used, whether the hostname is
+forwarded to a router on connect. The generic "keyfile" plugin does
+not forward the hostname in default configuration. To make it forward
+the hostname, add the following to
+/etc/NetworkManager/NetworkManager.conf:
+
+#+begin_src sh
+[keyfile]
+hostname=your_hostname
+#+end_src

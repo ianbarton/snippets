@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Various Snippets of Code.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Code Snippets (old posts, page 1) | My Code Snippets</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+<link rel="canonical" href="http://snippets.ianbarton.net/index-1.html">
+<link rel="prev" href="." type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://snippets.ianbarton.net/">
+
+                <span id="blog-title">My Code Snippets</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="archive.html">Archive</a>
+                </li>
+<li>
+<a href="categories/">Tags</a>
+                </li>
+<li>
+<a href="rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+
+    
+
+
+    
+<div class="postindex">
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2017-10-21-git-push-all-tags-and-branches/" class="u-url">2017 10 21 Git Push All Tags And Branches</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Ian Barton
+            </span></p>
+            <p class="dateline"><a href="posts/2017-10-21-git-push-all-tags-and-branches/" rel="bookmark"><time class="published dt-published" datetime="2017-10-21T09:46:48Z" title="2017-10-21 09:46">2017-10-21 09:46</time></a></p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Git Push All tags and branches.</h2>
+<div class="outline-text-2" id="text-1">
+<div class="highlight"><pre><span></span>$ git config --add remote.origin.push '+refs/heads/*:refs/heads/*'
+$ git config --add remote.origin.push '+refs/tags/*:refs/tags/*'
+</pre></div>
+
+<p>
+or directly edit .git/config file to have something like the
+following:
+</p>
+
+<div class="highlight"><pre><span></span>[remote "origin"]
+	url = user@example.com:/srv/git/repo.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	fetch = +refs/tags/*:refs/tags/*
+	push  = +refs/heads/*:refs/heads/*
+	push  = +refs/tags/*:refs/tags/*
+</pre></div>
+
+<p>
+And if you add -u once, e.g. git push –all origin -u, tracking is
+setup and after that you can simply use git push.
+</p>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="posts/2017-10-21-splitting-git-repo/" class="u-url">2017 10 21 Splitting a Git Repo</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Ian Barton
+            </span></p>
+            <p class="dateline"><a href="posts/2017-10-21-splitting-git-repo/" rel="bookmark"><time class="published dt-published" datetime="2017-10-21T09:43:33Z" title="2017-10-21 09:43">2017-10-21 09:43</time></a></p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <p>
+From:
+<a href="http://stackoverflow.com/questions/359424/detach-subdirectory-into-separate-git-repository">http://stackoverflow.com/questions/359424/detach-subdirectory-into-separate-git-repository</a>
+</p>
+
+<ol class="org-ol">
+<li>Clone the repo:
+</li>
+</ol>
+<div class="highlight"><pre><span></span>git clone --no-hardlinks foo bar; cd bar
+git filter-branch --subdirectory-filter subdir/you/want
+</pre></div>
+
+<p>
+The –no-hardlinks option makes git use real files and not use hard
+links when the repo is on a local hard disk.
+</p>
+
+<ol class="org-ol">
+<li>Remove all references to the old history. "origin" keeps track of
+your clone and "original" is where filter-branch saves the old
+stuff.
+</li>
+</ol>
+<div class="highlight"><pre><span></span>git remote rm origin
+rm -r .git/refs/original/
+git reflog expire --expire=now --all
+</pre></div>
+
+<ol class="org-ol">
+<li>Shred your pack file to remove any traces of your history.
+</li>
+</ol>
+<div class="highlight"><pre><span></span>git gc --aggressive
+</pre></div>
+
+<ol class="org-ol">
+<li>Use git-prune to delete all the unused commits.
+</li>
+</ol>
+<div class="highlight"><pre><span></span>git prune
+</pre></div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Git Push All tags and branches.   <span class="tag"><span class="git">git</span></span>
+</h2>
+<div class="outline-text-2" id="text-1">
+<div class="highlight"><pre><span></span>$ git config --add remote.origin.push '+refs/heads/*:refs/heads/*'
+$ git config --add remote.origin.push '+refs/tags/*:refs/tags/*'
+</pre></div>
+
+<p>
+or directly edit .git/config file to have something like the
+following:
+</p>
+
+<div class="highlight"><pre><span></span>[remote "origin"]
+	url = user@example.com:/srv/git/repo.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	fetch = +refs/tags/*:refs/tags/*
+	push  = +refs/heads/*:refs/heads/*
+	push  = +refs/tags/*:refs/tags/*
+</pre></div>
+
+<p>
+And if you add -u once, e.g. git push –all origin -u, tracking is
+setup and after that you can simply use git push.
+</p>
+</div>
+</div>
+    </div>
+    </article>
+</div>
+
+        <nav class="postindexpager"><ul class="pager">
+<li class="previous">
+                <a href="." rel="prev">Newer posts</a>
+            </li>
+        </ul></nav>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2017         <a href="mailto:ian@manor-farm.org">Ian Barton</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-46799003-1"></script><script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-46799003-1');
+   </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+#+BEGIN_COMMENT
+.. title: 2017 10 23 Emacs Renaming Files
+.. slug: 2017-10-23-Emacs Renaming Files
+.. date: 2017-10-23 14:05:22 UTC
+.. tags: emacs
+.. category:
+.. link:
+.. description:
+.. type: text
+
+* Emacs Bulk Rename Files
+
+https://alexschroeder.ch/wiki/Diary
+
+I had a bunch of files named like this, from various albums.
+
+Cure - [1984] The top - 01 - Shake dog shake.mp3
+Cure - [1984] The top - 02 - Bird mad girl.mp3
+Cure - [1984] The top - 03 - Wailing wall.mp3
+
+#+begin_src emacs-lisp
+(dolist (file (directory-files "c:/Users/asc/Music/The Cure" t "\\.mp3$"))
+  (let* ((name (file-name-nondirectory file))
+	 (data (split-string name " - "))
+	 (album (nth 1 data)))
+    (unless (file-directory-p (concat "c:/Users/asc/Music/The Cure/" album))
+      (make-directory (concat "c:/Users/asc/Music/The Cure/" album)))
+    (rename-file file (concat "c:/Users/asc/Music/The Cure/" album "/" name))))
+#+end_src

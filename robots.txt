@@ -1,0 +1,4 @@
+Sitemap: http://snippets.ianbarton.net/sitemapindex.xml
+
+User-Agent: *
+Host: snippets.ianbarton.net

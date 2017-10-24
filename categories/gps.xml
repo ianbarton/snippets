@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>My Code Snippets (Posts about gps)</title><link>http://snippets.ianbarton.net/</link><description></description><atom:link href="http://snippets.ianbarton.net/categories/gps.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:ian@manor-farm.org"&gt;Ian Barton&lt;/a&gt; </copyright><lastBuildDate>Tue, 24 Oct 2017 10:17:20 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>2017 10 23 Export Tcx File From Strava</title><link>http://snippets.ianbarton.net/posts/2017-10-23-export-tcx-file-from-strava/</link><dc:creator>Ian Barton</dc:creator><description>&lt;div id="outline-container-sec-1" class="outline-2"&gt;
+&lt;h2 id="sec-1"&gt;Export Tcx File From Strava&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-1"&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;http://activity/export_tcx
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;
+Simply add "/export&lt;sub&gt;tcx&lt;/sub&gt;" - without quotes - to the end of your
+activity page URL.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description><category>gps</category><category>strava</category><category>tcx</category><guid>http://snippets.ianbarton.net/posts/2017-10-23-export-tcx-file-from-strava/</guid><pubDate>Mon, 23 Oct 2017 14:03:23 GMT</pubDate></item></channel></rss>

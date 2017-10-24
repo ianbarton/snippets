@@ -1,0 +1,66 @@
+#+BEGIN_COMMENT
+.. title: 2017 10 21 Splitting a Git Repo
+.. slug: 2017-10-21-splitting-git-repo
+.. date: 2017-10-21 09:43:33 UTC
+.. tags: git
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+From:
+http://stackoverflow.com/questions/359424/detach-subdirectory-into-separate-git-repository
+
+1. Clone the repo:
+
+#+BEGIN_SRC emacs-shell
+  git clone --no-hardlinks foo bar; cd bar
+  git filter-branch --subdirectory-filter subdir/you/want
+#+END_SRC
+
+The --no-hardlinks option makes git use real files and not use hard
+links when the repo is on a local hard disk.
+
+2. Remove all references to the old history. "origin" keeps track of
+   your clone and "original" is where filter-branch saves the old
+   stuff.
+
+#+BEGIN_SRC emacs-shell
+  git remote rm origin
+  rm -r .git/refs/original/
+  git reflog expire --expire=now --all
+#+END_SRC
+
+3. Shred your pack file to remove any traces of your history.
+
+#+BEGIN_SRC emacs-shell
+  git gc --aggressive
+#+END_SRC
+
+4. Use git-prune to delete all the unused commits.
+
+#+BEGIN_SRC emacs-shell
+  git prune
+#+END_SRC
+** Git Push All tags and branches.                                     :git:
+#+begin_src shell
+$ git config --add remote.origin.push '+refs/heads/*:refs/heads/*'
+$ git config --add remote.origin.push '+refs/tags/*:refs/tags/*'
+
+#+end_src
+
+or directly edit .git/config file to have something like the
+following:
+
+#+begin_src shell
+[remote "origin"]
+        url = user@example.com:/srv/git/repo.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+        fetch = +refs/tags/*:refs/tags/*
+        push  = +refs/heads/*:refs/heads/*
+        push  = +refs/tags/*:refs/tags/*
+#+end_src
+
+And if you add -u once, e.g. git push --all origin -u, tracking is
+setup and after that you can simply use git push.
