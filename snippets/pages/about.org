@@ -1,0 +1,23 @@
+#+BEGIN_COMMENT
+.. title: About
+.. slug: about
+.. date: 2017-10-24 14:55:52 UTC
+.. tags:
+.. category:
+.. link:
+.. description:
+.. type: text
+#+END_COMMENT
+
+
+I often capture code snippets using Emacs org-mode. Rather than keep them in
+one or more org-files, I thought it would be more convenient to create a web
+site, where it' easy to find snippets using tags, or a Google search.
+
+I found most of these snippets on other people's web sites. I have tried to
+credit the source, where I remembered to record it. However, if you find a
+snippet that has no attribution and you think it's yours, please let me know
+and I'll attribute it to you!
+
+It's going to take a while to import all my existing snippets into the site,
+but I'll get there eventually!
