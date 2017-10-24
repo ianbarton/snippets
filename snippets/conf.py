@@ -136,6 +136,7 @@ NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/archive.html", "Archive"),
         ("/categories/", "Tags"),
+        ("/stories/about/index.html", "About"),
         ("/rss.xml", "RSS feed"),
     ),
 }
@@ -193,6 +194,7 @@ PAGES = (
     ("pages/*.md", "pages", "page.tmpl"),
     ("pages/*.txt", "pages", "page.tmpl"),
     ("pages/*.html", "pages", "page.tmpl"),
+    ("pages/*.org", "stories", "story.tmpl"),
     ("stories/*.org", "stories", "story.tmpl"),
 )
 
@@ -414,7 +416,7 @@ POSTS_SECTIONS = True
 
 # If TAG_PAGES_ARE_INDEXES is set to True, each tag's page will contain
 # the posts themselves. If set to False, it will be just a list of links.
-# TAG_PAGES_ARE_INDEXES = False
+TAG_PAGES_ARE_INDEXES = False
 
 # Set descriptions for tag pages to make them more interesting. The
 # default is no description. The value is used in the meta description
